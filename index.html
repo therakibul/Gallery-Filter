@@ -15,7 +15,7 @@
 <body>
     <section>
         <ul>
-            <li class="list active"> All</li>
+            <li class="list active" data-filter="all"> All</li>
             <li class="list" data-filter="camera">Camera</li>
             <li class="list" data-filter="headphone">Headphone</li>
             <li class="list" data-filter="mobile">Mobile</li>
@@ -50,7 +50,19 @@
         </div>
     </section>
 
-
+    <script>
+        $(document).ready(function () {
+            $(".list").click(function () {
+                let value = $(this).data("filter");
+                if (value == "all") {
+                    $(".product").show(1000);
+                } else {
+                    $(".product").not("." + value).hide(1000);
+                    $(".product").filter("." + value).show(1000);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
